@@ -8,7 +8,6 @@ PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin s
 
 #FONT="ComicShanns"                                            # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 FONT="ComicShannsMono Nerd Font"
-SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID 2>/dev/null" # The script that is run for clicking on space components
 
 PADDINGS=3 # All paddings use this value (icon, label, background)
 
@@ -59,5 +58,6 @@ source "$ITEM_DIR/calendar.sh"
 
 ############## FINALIZING THE SETUP ##############
 sketchybar --update
+sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
 
 echo "sketchybar configuation loaded.."
