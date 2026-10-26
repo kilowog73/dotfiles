@@ -1,0 +1,27 @@
+{{ if or (ne .chezmoi.os "darwin") (ne .profile "home") }}
+.aerospace.toml
+.config/sketchybar
+.config/sketchybar/**
+{{ end }}
+{{ if ne .chezmoi.os "windows" }}
+.bash_profile
+{{ end }}
+{{ if ne .profile "home" }}
+.config/opencode
+.config/opencode/**
+{{ end }}
+.config/nvim/README.md
+.config/nvim/LICENSE
+.config/nvim/lua/plugins/mason.bak
+.config/nvim/lua/plugins/test.md
+.config/sketchybar/sketchybarrc.bak
+# OpenCode authentication and runtime state must never be synchronized.
+.config/opencode/service.json
+.config/opencode/auth.json
+.config/opencode/auth.jsonc
+.local/share/opencode
+.local/share/opencode/**
+.local/state/opencode
+.local/state/opencode/**
+.cache/opencode
+.cache/opencode/**

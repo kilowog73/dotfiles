@@ -1,0 +1,3 @@
+if [ -x /usr/bin/zsh.exe ]; then
+  exec /usr/bin/zsh -l
+fi
