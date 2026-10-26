@@ -1,0 +1,49 @@
+export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/starship.toml"
+for _user_bin in "$HOME/.local/bin" "$HOME/.opencode/bin"; do
+  [[ -d "$_user_bin" ]] && path=("$_user_bin" $path)
+done
+unset _user_bin
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh --cmd cd)"
+fi
+
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
+
+if [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/fzf/fzf.zsh" ]]; then
+  source "${XDG_CONFIG_HOME:-$HOME/.config}/fzf/fzf.zsh"
+elif [[ -f "$HOME/.fzf.zsh" ]]; then
+  source "$HOME/.fzf.zsh"
+fi
+
+if command -v eza >/dev/null 2>&1; then
+  alias l="eza --icons"
+  alias ls="eza --icons"
+  alias ll="eza -lg --icons"
+  alias la="eza -lag --icons"
+  alias lt="eza -lTg --icons"
+  alias lt1="eza -lTg --level=1 --icons"
+  alias lt2="eza -lTg --level=2 --icons"
+  alias lt3="eza -lTg --level=3 --icons"
+  alias lta="eza -lTag --icons"
+  alias lta1="eza -lTag --level=1 --icons"
+  alias lta2="eza -lTag --level=2 --icons"
+  alias lta3="eza -lTag --level=3 --icons"
+fi
+
+if command -v brew >/dev/null 2>&1; then
+  _zsh_highlighting="$(brew --prefix zsh-syntax-highlighting 2>/dev/null)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  [[ -f "$_zsh_highlighting" ]] && source "$_zsh_highlighting"
+fi
+
+for _zsh_highlighting in \
+  /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+  /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
+  if [[ -f "$_zsh_highlighting" ]]; then
+    source "$_zsh_highlighting"
+    break
+  fi
+done
+unset _zsh_highlighting
