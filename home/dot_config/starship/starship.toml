@@ -66,15 +66,35 @@ format = '[ $user]($style)'
 [directory]
 style = "bg:peach fg:crust"
 format = "[ $path ]($style)"
+home_symbol = "󰋜"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
+"Applications" = "󰀲 "
+"applications" = "󰀲 "
+"Desktop" = "󰇄 "
+"desktop" = "󰇄 "
 "Documents" = "󰈙 "
+"documents" = "󰈙 "
 "Downloads" = " "
+"downloads" = " "
+"Movies" = "󰿎 "
+"movies" = "󰿎 "
 "Music" = "󰝚 "
+"music" = "󰝚 "
 "Pictures" = " "
+"pictures" = " "
+"Projects" = "󰲋 "
+"projects" = "󰲋 "
+"Public" = "󰉍 "
+"public" = "󰉍 "
+"Templates" = "󰏗 "
+"templates" = "󰏗 "
+"Videos" = "󰕧 "
+"videos" = "󰕧 "
 "Developer" = "󰲋 "
+"developer" = "󰲋 "
 
 [git_branch]
 symbol = ""
