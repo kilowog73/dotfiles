@@ -52,6 +52,7 @@ if [[ -n "${MSYSTEM:-}" ]] && command -v pacman >/dev/null 2>&1; then
   packages=(
     zsh git curl unzip zsh-syntax-highlighting
     mingw-w64-ucrt-x86_64-eza
+    mingw-w64-ucrt-x86_64-fastfetch
     mingw-w64-ucrt-x86_64-fd
     mingw-w64-ucrt-x86_64-fzf
     mingw-w64-ucrt-x86_64-github-cli
@@ -114,7 +115,7 @@ fi
 if command -v dnf >/dev/null 2>&1; then
   profile="$(get_profile)"
   packages=(
-    zsh git curl fontconfig gcc make eza fd-find fzf gh ghostscript ghostty ImageMagick mc
+    zsh git curl fontconfig gcc make eza fastfetch fd-find fzf gh ghostscript ghostty ImageMagick mc
     neovim nodejs pandoc ripgrep ruby starship tmux tree wget zoxide zsh-syntax-highlighting
   )
   if [[ "$profile" == "home" ]]; then
@@ -175,6 +176,11 @@ if command -v apt-get >/dev/null 2>&1; then
     zsh git curl fontconfig eza fd-find fzf gh ghostscript imagemagick mc neovim nodejs \
     pandoc ripgrep ruby starship tmux tree wget zoxide zsh-syntax-highlighting
   )
+  if apt-cache show fastfetch >/dev/null 2>&1; then
+    packages+=(fastfetch)
+  else
+    echo "Fastfetch isn't available in the configured APT repositories; skipping it." >&2
+  fi
   sudo apt-get install -y "${packages[@]}"
   if [[ "$profile" == "home" ]]; then
     sudo apt-get install -y gnupg

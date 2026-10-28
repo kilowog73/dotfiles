@@ -1,4 +1,10 @@
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/starship.toml"
+export EDITOR=nvim
+export VISUAL="$EDITOR"
+export GIT_EDITOR="$EDITOR"
+export GIT_SEQUENCE_EDITOR="$EDITOR"
+export SUDO_EDITOR="$EDITOR"
+
 for _user_bin in "$HOME/.local/bin" "$HOME/.opencode/bin"; do
   [[ -d "$_user_bin" ]] && path=("$_user_bin" $path)
 done
@@ -47,3 +53,8 @@ for _zsh_highlighting in \
   fi
 done
 unset _zsh_highlighting
+
+if [[ -o interactive && -t 1 && -z "${FASTFETCH_SHOWN:-}" ]] && command -v fastfetch >/dev/null 2>&1; then
+  export FASTFETCH_SHOWN=1
+  fastfetch || true
+fi

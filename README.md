@@ -33,6 +33,9 @@ macOS-only configuration off Linux and Windows.
 - Debian-family Linux and WSL: Zsh and `apt`
 - Native Windows: Zsh through MSYS2
 
+Interactive Zsh runs Fastfetch once per terminal when it is installed. The
+Neofetch command is no longer part of shell startup.
+
 For native Windows, configure MSYS2 to use the Windows user home (`db_home:
 windows` in MSYS2's `/etc/nsswitch.conf`) so Zsh and chezmoi use the same
 dotfile destination. The Windows-only Bash profile starts Zsh after it is

@@ -15,6 +15,7 @@ end
 brew "ast-grep"
 brew "curl"
 brew "eza"
+brew "fastfetch"
 brew "fd"
 brew "fzf"
 brew "gh"
